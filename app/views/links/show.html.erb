@@ -7,6 +7,18 @@
   <strong>Url:</strong>
   <%= @link.url %>
 </p>
-
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<table>
+  <tbody>
+    <tr>
+      <td><%= link_to "Likes #{@link.get_upvotes.size}", like_link_path(@link), method: :put %></td>
+      <td><%= link_to "Dislikes #{@link.get_downvotes.size}", dislike_link_path(@link), method: :put %></td>    
+    </tr>
+    <tr>
+      <td><%= link_to "Back", links_path %></td>
+      <% if @link.user == current_user %>
+        <td><%= link_to "Edit", edit_link_path(@link) %></td>
+        <td><%= link_to "Destroy", @link, method: :delete, data: { confirm: "are you sure?" } %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

@@ -12,16 +12,14 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= link_to link.title, link.url, target: "_blank" %></td>
+        <td><%= link_to link.title, link %></td>
         <td>Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %></td>
         <td>
           <table>
             <tbody>
-              <td><%= link_to 'Show', link %></td>
-              <% if link.user == current_user %>
-                <td><%= link_to 'Edit', edit_link_path(link) %></td>
-                <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
+              <td><%= link_to "Visit", link.url, target: "_blank" %></td>
+              <td><%= link_to "Likes #{link.get_upvotes.size}",like_link_path(link), method: :put %></td>
+              <td><%= link_to "Dislikes #{link.get_downvotes.size}",dislike_link_path(link), method: :put %></td>
             </tbody>
           </table>
         </td>
