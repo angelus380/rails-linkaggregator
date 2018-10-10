@@ -7,6 +7,7 @@
   <strong>Url:</strong>
   <%= @link.url %>
 </p>
+
 <table>
   <tbody>
     <tr>
@@ -22,3 +23,8 @@
     </tr>
   </tbody>
 </table>
+
+<p>Number of comments: <%= @link.comments.count %></p>
+
+<%= render @link.comments %>
+<%= render "comments/form" %>

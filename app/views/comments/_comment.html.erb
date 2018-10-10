@@ -1,0 +1,6 @@
+<p>
+  <%= comment.user.email %>: <%= comment.body %>
+	<% if comment.user == current_user %>
+	  <%= link_to "Destroy Comment", [comment.link, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+</p>
