@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  # before_action :set_link_id, only: [:create, :destroy]
+  before_action :authenticate_user!
 
   # POST /comments
   # POST /comments.json
